@@ -47,8 +47,3 @@ The `notes.db` SQLite database is created automatically when the app starts. Kee
 | POST | `/api/notes` | Create a note |
 | PUT | `/api/notes/<id>` | Update a note |
 | DELETE | `/api/notes/<id>` | Delete a note |
-
-## GitHub submission
-Create a GitHub repository named `QuickNote-Application`, upload the project files, and submit the repository URL on the internship dashboard.
-
-Do not upload your `.venv` folder. The generated `notes.db` file is local application data and does not need to be committed.
