@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickNote | Personal Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/"><span class="brand-mark">Q</span><span>quicknote</span></a>
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-item active" id="allNotesButton"><span>▤</span> All notes <span class="nav-count" id="noteCount">0</span></button>
+      <div class="sidebar-bottom">
+        <div class="tip-card">
+          <div class="tip-icon">✦</div>
+          <strong>A little reminder</strong>
+          <p>Good ideas deserve a place to stay.</p>
+        </div>
+        <div class="profile"><div class="avatar">Q</div><div><strong>My workspace</strong><small>Personal notes</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><p class="eyebrow">YOUR PERSONAL SPACE</p><h1>Notes that keep you <span>moving.</span></h1></div>
+        <div class="top-actions"><span class="saved-indicator"><i></i> Saved locally</span><button class="primary-btn" id="newNoteButton">＋ New note</button></div>
+      </header>
+
+      <section class="welcome-strip">
+        <div><span class="strip-kicker">YOUR THOUGHTS, ORGANIZED</span><h2>Make room for your next big idea.</h2><p>Capture quick thoughts, plans, and reminders in one calm space.</p></div>
+        <div class="strip-art"><div class="art-sheet sheet-back"></div><div class="art-sheet sheet-front"><span>✦</span><b>Ideas start here.</b><small>One note at a time.</small></div></div>
+      </section>
+
+      <section class="notes-section">
+        <div class="section-heading"><div><p class="eyebrow">YOUR COLLECTION</p><h2>All notes <span id="visibleCount">0</span></h2></div>
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search your notes..."></label>
+        </div>
+        <div id="notesGrid" class="notes-grid"></div>
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">✎</div><h3>No notes yet</h3><p>Start with a thought, a reminder, or an idea you don't want to forget.</p><button class="primary-btn" id="emptyNewButton">Create your first note</button>
+        </div>
+      </section>
+      <footer>Made for your ideas <span>✦</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="noteModal">
+    <section class="note-modal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+      <div class="modal-top"><div><p class="eyebrow">NOTE EDITOR</p><h2 id="modalHeading">Create a note</h2></div><button class="icon-btn" id="closeModal" aria-label="Close">×</button></div>
+      <form id="noteForm">
+        <label for="noteTitle">TITLE</label><input id="noteTitle" maxlength="100" placeholder="Give your note a title..." required>
+        <label for="noteContent">YOUR NOTE</label><textarea id="noteContent" rows="8" placeholder="Start writing here..." required></textarea>
+        <div class="form-bottom"><span id="formMessage">Your note will be saved to your workspace.</span><button class="primary-btn" type="submit" id="saveButton">Save note ↗</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
